@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>Profile Details</title>
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	</head>
+	<body>
+		<br><br>
+		{% if user.username %}
+		<div class="container">
+                  <div class="row">
+                      <div class="panel panel-default">
+                      <div class="panel-heading">  <h4 >User Profile</h4>
+						 <a class="btn btn-primary" href="{% url 'third_app:index' %}" role="button" id=main1>HOME</a>
+					  </div>
+                       <div class="panel-body">
+                      <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+						  {% if user.userprofileinfo.profile_pics %}
+                       <img alt="User Pic" src="{{ user.userprofileinfo.profile_pics.url }}" id="profile-image1" class="img-thumbnail img-responsive">
+					   	{% else %}
+						<img alt="User Pic" src="{% static "images/profile.png" %}" id="profile-image1" class="img-thumbnail img-responsive">
+						{% endif %}
+                      </div>
+                      <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8" >
+                          <div class="container" >
+                            <h2>{{ user.username }}</h2>
+                            <p> An  <b> Employee</b></p>
+
+
+                          </div>
+                           <hr>
+                          <ul class="container details" >
+                            <li><p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>{{ user.email }}</p></li>
+							<li><p><span class="glyphicon glyphicon-earphone" style="width:50px;"></span>{{ user.userprofileinfo.phone_no }}</p></li>
+							<li><p><span class="glyphicon glyphicon-user" style="width:50px;"></span>{{ user.userprofileinfo.age }}</p></li>
+                          </ul>
+                          <hr>
+
+                      </div>
+                </div>
+            </div>
+            </div>
+		</div>
+		{% else %}
+		<h1 class="display-1">Please Sign In</h1>
+		{% endif %}
+		<style>
+		#main1{
+			margin-top: -37px;
+			float: right;
+		}
+		</style>
+	</body>
+
+</html>

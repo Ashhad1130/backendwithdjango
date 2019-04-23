@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>Register</title>
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<div class="container register-form">
+			{% if registered %}
+			<h1 class="display-1">Thank you for Registering<h1>
+				<a href="{% url 'third_app:index' %}">Go back to Home Page</a>
+			{% else %}
+            <div class="form">
+                <div class="note">
+                    <p>Registration Form</p>
+                </div>
+				<br>
+				<br>
+				<form enctype="multipart/form-data" name="" value="Register" method="POST">
+					<div class="form-content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+								{% csrf_token %}
+								{{ user_form.as_p }}
+								{{ profile_form.as_p }}
+                            </div>
+					<input class="btnSubmit" type="submit" name="" value="Register">
+				</div>
+			</div>
+		</div>
+				</form>
+
+            </div>
+			{% endif %}
+        </div>
+
+
+<style>
+.note
+{
+    text-align: center;
+    height: 80px;
+    background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+    color: #fff;
+    font-weight: bold;
+    line-height: 80px;
+}
+.form-content
+{
+    padding: 5%;
+    border: 5px solid #ced4da;
+    margin-bottom: 2%;
+}
+.form-control{
+    border-radius:1.5rem;
+}
+.btnSubmit
+{
+    border:none;
+    border-radius:1.5rem;
+    padding: 1%;
+    width: 20%;
+    cursor: pointer;
+    background: #0062cc;
+    color: #fff;
+}
+
+</style>
+
+	</body>
+</html>
